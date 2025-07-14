@@ -9,14 +9,17 @@ import {
 } from "../shared/constants";
 import { AadharDataSchema } from "../shared/validate";
 import { AadharData } from "../shared/validate";
+import { extractAadhaarInfo } from "../utils/formatData";
 
 export async function ocrController(
   req: Request,
   res: Response
 ): Promise<void> {
   try {
+    console.log("Hello");
     const frontImage = req.body.frontImage;
     const backImage = req.body.backImage;
+    console.log(frontImage, backImage);
     if (!frontImage || !backImage) {
       res.status(HTTP_STATUS.BAD_REQUEST).json({
         success: false,
@@ -31,10 +34,12 @@ export async function ocrController(
       frontBuffer,
       backBuffer
     );
-    console.log(frontText, backText);
+    const parsedData = extractAadhaarInfo(frontText, backText);
+
     res.status(HTTP_STATUS.OK).json({
       sucess: true,
       message: SUCCESS_MESSAGES.DATA_PARSED,
+      parsedData
     });
   } catch (error) {
     console.error(error);
@@ -47,8 +52,11 @@ export async function ocrController(
 
 export async function saveDate(req: Request, res: Response): Promise<void> {
   try {
+    console.log("Hello Save Data");
     const { data } = req.body;
+    console.log(data)
     const parsedResult = AadharDataSchema.safeParse(data);
+    console.log(parsedResult)
     if (!parsedResult.success) {
       res.status(HTTP_STATUS.BAD_REQUEST).json({
         success: false,
@@ -79,6 +87,7 @@ export async function getAadharList(
 ): Promise<void> {
   try {
     const aadharData = await AadharModel.find();
+
     if (!aadharData || aadharData.length === 0) {
       res.status(HTTP_STATUS.NOT_FOUND).json({
         success: false,

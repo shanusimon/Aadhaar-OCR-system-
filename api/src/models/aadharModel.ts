@@ -7,7 +7,7 @@ const aadharSchema = new Schema(
     fatherName: { type: String },
     gender: { type: String, required: true },
     address: { type: String, required: true },
-    aadharNumber: { type: String, required: true },
+    aadhaarNumber: { type: String, required: true },
   },
   { timestamps: true }
 );

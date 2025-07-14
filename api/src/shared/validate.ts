@@ -9,7 +9,7 @@ export const AadharDataSchema = z.object({
     .refine((val) => !val || val.trim().length >= 3, {
       message: "Father's name must be at least 3 characters if provided",
     }),
-  aadharNumber: z
+  aadhaarNumber: z
     .string()
     .regex(/^\d{4} \d{4} \d{4}$/, "Invalid Aadhaar number"),
   dob: z

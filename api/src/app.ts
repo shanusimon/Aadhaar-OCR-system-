@@ -8,7 +8,7 @@ import router from "./routes/router";
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = process.env.ALLOWED_ORGINS || "";
+const allowedOrigins = process.env.ALLOWED_ORGINS || "http://localhost:5173";
 
 app.use(
   cors({
