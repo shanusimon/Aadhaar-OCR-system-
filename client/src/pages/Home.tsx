@@ -35,7 +35,7 @@ function Home() {
                 <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100">
                     <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
                         <div className="text-center lg:text-left flex-1">
-                            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                            <h1 className="text-4xl lg:text-5xl font-bold  mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                                 Aadhaar Card OCR Scanner
                             </h1>
                             <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
